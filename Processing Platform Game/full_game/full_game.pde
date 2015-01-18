@@ -1,31 +1,31 @@
-PImage bb;
-int bbX, bbY;
+BlueBooster bb;
+Platform plat;
 
 void setup() {
- size(800, 600);
-
-  imageMode(CENTER);
-  bb = loadImage("BB_RUN1.png"); 
-  bbX = width/2;
-  bbY = height/2;
+  size(800, 600);
+  bb = new BlueBooster();
+  plat = new Platform(width/2, height/2, 100, 30);
 }
 
 void draw() {
-  background(255);
-  image(bb, bbX, bbY, bb.width*0.5, bb.height*0.5);
+  background(135, 158, 180);
+  plat.display();
+  bb.display();
 }
 
 void keyPressed() {
- if( key==CODED ) {
-    if( keyCode == UP ) {
-      bbY-=5;
-    } else if( keyCode == DOWN ) {
-      bbY+=5;
-    } else if( keyCode == RIGHT ) {
-      bbX+=5;
-    } else if( keyCode == LEFT ) {
-      bbX-=5;
+  if ( key==CODED ) {
+    if ( keyCode == UP ) {
+      bb.moveUp();
+    } else if ( keyCode == DOWN ) {
+      bb.moveDown();
+    } else if ( keyCode == RIGHT ) {
+      bb.moveRight();
+    } else if ( keyCode == LEFT ) {
+      bb.moveLeft();
     }
- } 
+  }
 }
-  
+
+
+
